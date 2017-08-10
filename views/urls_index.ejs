@@ -1,0 +1,16 @@
+<%- include('partials/_header'); %>
+<body>
+  <ul>
+    <%
+      for(var shortenedUrl in urls) {
+    %>
+      <li>
+       <div style="width: 300px; display: inline-block"><%= shortenedUrl %> &#8594 <%= urls[shortenedUrl]%></div>
+       <a href="urls/<%= shortenedUrl %>">Edit</a>
+       <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/delete">
+        <input type="submit" value="Delete"/>
+      </form> </li>
+    <% } %>
+    <a href="https://www.tumblr.com/dashboard">link for shortening URL</a>
+  </ul>
+</body>
