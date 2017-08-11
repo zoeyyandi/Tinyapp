@@ -1,9 +1,12 @@
 const express = require("express");
+const cookieParser = require('cookie-parser')
+
 const app = express();
 const PORT = process.env.PORT || 8080; // default port 8080
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser())
 
 app.set("view engine", "ejs");
 
@@ -13,12 +16,16 @@ const urlDatabase = {
 };
 // route to urls
 app.get("/urls", (req, res) => {
-  res.render("urls_index", { urls: urlDatabase });
+  let templateVars = {
+    username: req.cookies["username"],
+    urls: urlDatabase,
+  };
+  res.render("urls_index", templateVars);
 });
 
 //form to new short url
 app.get("/urls/new", (req, res) => {
-  res.render("urls_new");
+  res.render("urls_new", {username: req.cookies["username"]});
 });
 
 app.post("/urls", (req, res) => {
@@ -44,7 +51,12 @@ app.get("/urls/:id", (req, res) => {
   if(!urlDatabase[req.params.id]) {
     res.render('urls_error', { error: 'This short url does not exist'})
   } else {
-    res.render("urls_show", { shortURL: req.params.id, urls: urlDatabase  })
+    let templateVars2 = {
+      username: req.cookies["username"],
+      urls: urlDatabase,
+      shortURL: urlDatabase[req.params.id]
+    };
+    res.render("urls_show", templateVars2)
   }
 });
 // Delete URL in database
@@ -58,6 +70,16 @@ app.post("/urls/:id", (req, res) => {
   console.log('shortURL', req.params.id)
   let longURL = req.body.updatedLink
   urlDatabase[req.params.id] = longURL
+  res.redirect("/urls")
+})
+
+app.post("/login", (req, res) => {
+  res.cookie('username', req.body.username)
+  res.redirect("/urls")
+})
+
+app.post("/logout", (req, res) => {
+  res.clearCookie('username', req.body.username)
   res.redirect("/urls")
 })
 
