@@ -5,12 +5,16 @@
       for(var shortenedUrl in urls) {
     %>
       <li>
-       <div style="width: 300px; display: inline-block"><%= shortenedUrl %> &#8594 <%= urls[shortenedUrl]%></div>
-       <a href="urls/<%= shortenedUrl %>">Edit</a>
-       <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/delete">
-        <input type="submit" value="Delete"/>
-      </form> </li>
+        <div style="width: 300px; display: inline-block"><a href="http://<%=urls[shortenedUrl]%>"><%= shortenedUrl %></a> &#8594 <%= urls[shortenedUrl]%></div>
+        <a href="urls/<%= shortenedUrl %>">Edit</a>
+        <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/delete">
+          <input type="submit" value="Delete"/>
+        </form>
+      </li>
     <% } %>
-    <a href="https://www.tumblr.com/dashboard">link for shortening URL</a>
+    <a href="/urls/new">link for shortening URL</a>
   </ul>
 </body>
+
+
+
