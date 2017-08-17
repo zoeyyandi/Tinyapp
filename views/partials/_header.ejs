@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>TinyApp</title>
+  <h1>TinyApp</h1>
   <% if(!user_id){ %>
   <a href="/register"><button>To Register</button></a>
   <a href="/login"> <button>To Log In</button> </a>
@@ -9,6 +10,6 @@
   <form method="POST" action="/Logout">
   <input type="submit" value ='Logout'/>
   </form>
-  <h1> User: <%= user_id %> </h1>
+  <p> User: <%= user_id %> </p>
   <% } %>
 </head>

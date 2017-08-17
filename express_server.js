@@ -37,12 +37,13 @@ app.get('/urls', (req, res) => {
   var user_id = req.session.user_id
   let templateVars = {
     user_id,
-    urls: urlDatabase[user_id],
+    urls: urlDatabase[user_id]
   };
   res.render('urls_index', templateVars);
 });
 
 //form to new short url
+// from urls_index page link for shortening url
 app.get('/urls/new', (req, res) => {
   if (req.session.user_id) {
     res.render('urls_new', {user_id: req.session.user_id});
@@ -51,32 +52,28 @@ app.get('/urls/new', (req, res) => {
   }
 });
 
-//
-// app.get('/u/:shortURL', (req, res) => {
-//   let longURL = urlDatabase[req.params.shortURL]
-//   res.redirect(longURL);
-// });
-
 // from edit button on index page
 app.get('/urls/:id', (req, res) => {
   var user_id = req.session.user_id
   var shortURL = req.params.id
-  if(!urlDatabase[user_id][shortURL]) { // if there is no 'this' short url
-    res.render('urls_error', { error: 'This short url does not exist'})
-  } else {
+  if(urlDatabase[user_id] && urlDatabase[user_id][shortURL]) { // if there is no 'this' short url
     let templateVars2 = {
       user_id,
       urls: urlDatabase[user_id][shortURL], // this is the long url
       shortURL
     };
     res.render('urls_show', templateVars2)
+  } else {
+    res.render('urls_error', { error: 'This short url does not exist'})
   }
 });
 
+// Getting request from register button, rendering registration_page ///
 app.get('/register', (req, res) => {
   res.render('registration_page')
 });
 
+//
 app.get('/login', (req, res) => {
   res.render('login_page')
 });
@@ -115,8 +112,7 @@ app.post('/register', (req, res) => {
     password: hashedPassword
   }
   users[newUserId] = newUser
-  //res.cookie('user_id', newUserId) // this is where you set cookies
-  req.session.user_id = newUserId // this is how you set the cookie using session
+  req.session.user_id = newUserId
   res.redirect('/urls')
 });
 
@@ -132,8 +128,12 @@ app.post('/urls/:id/delete', (req, res) => {
 app.post('/urls/:id', (req, res) => {
   var user_id = req.session.user_id
   let longURL = req.body.updatedLink
-  urlDatabase[user_id][req.params.id] = longURL // im updating the long url for one user_id and for that specific short
-  res.redirect('/urls')
+  if(urlDatabase[user_id] && urlDatabase[user_id][req.params.id]) {
+    urlDatabase[user_id][req.params.id] = longURL // im updating the long url for one user_id and for that specific short
+    res.redirect('/urls')
+  } else {
+    res.render('urls_error', { error: 'Unexpected Error Ocurred!'})
+  }
 })
 
 // Checking to see if user is registered by checking email and password///
@@ -149,6 +149,7 @@ app.post('/login', (req, res) => {
       req.session.user_id = userID;
     }
   }
+
   if(userID.length === 0) {
     res.status(403).send('User cannot be found!')
   }
