@@ -1,8 +1,8 @@
 <%- include('partials/_header'); %>
 <body>
 <h1>ShortURL: <%= shortURL %></h1>
-  <form method="POST" action="/urls/<%= shortURL%>">
-    <input name="updatedLink" style="width: 250px" id="updatedLink" placeholder="<%= urls[shortURL]%>">
+  <form method="POST" action="/urls/<%= shortURL %>/<%= longurl %>">
+    <input name="updatedLink" style="width: 250px" id="updatedLink" placeholder="<%= longurl %>">
     <input type="submit" value="Update"/>
   </form>
 </body>

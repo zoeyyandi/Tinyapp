@@ -2,14 +2,16 @@
 <html>
 <head>
   <title></title>
+   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+   <link rel="stylesheet" href="style/main.css" type="text/css" />
 </head>
 <body>
-<h1>Hello there, please log in!</h1>
+<h1 id="message">Login</h1>
  <form method="POST" action="/Login">
-    <label>Email</label>
-    <input name='Email' type = 'email'/> <br/>
-    <label>Password</label>
-    <input name='Password' type ='password'/> <br/>
+    <label id="login1">Email Address*:</label> <br/>
+    <input name='Email' type = 'email2'/> <br/>
+    <label id="login2">Password*:</label> <br/>
+    <input name='Password' type ='password2'/> <br/>
     <input type="submit" value = 'Login'/>
   </form>
 </body>

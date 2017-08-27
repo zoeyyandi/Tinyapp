@@ -1,19 +1,20 @@
 <%- include('partials/_header'); %>
 <body>
-  <ul>
+  <ul id="listOfUrls">
     <%
       for(var shortenedUrl in urls) {
     %>
       <li>
         <div style="width: 300px; display: inline-block"><a href="http://<%=urls[shortenedUrl]%>"><%= shortenedUrl %></a> &#8594 <%= urls[shortenedUrl]%></div>
         <a href="urls/<%= shortenedUrl %>">Edit</a>
-        <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/delete">
+        <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/<%= urls[shortenedUrl] %>/delete">
           <input type="submit" value="Delete"/>
         </form>
       </li>
     <% } %>
-    <a href="/urls/new">Click here to shorten a URL</a>
   </ul>
+
+  <a id="shortenUrl" href="/urls/new">Click here to shorten a URL</a>
 </body>
 
 
