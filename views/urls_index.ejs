@@ -1,19 +1,35 @@
 <%- include('partials/_header'); %>
 <body>
-  <ul>
-    <%
-      for(var shortenedUrl in urls) {
-    %>
-      <li>
-        <div style="width: 300px; display: inline-block"><a href="http://<%=urls[shortenedUrl]%>"><%= shortenedUrl %></a> &#8594 <%= urls[shortenedUrl]%></div>
-        <a href="urls/<%= shortenedUrl %>">Edit</a>
-        <form style="display: inline-block" method="POST" action="/urls/<%= shortenedUrl%>/delete">
-          <input type="submit" value="Delete"/>
-        </form>
-      </li>
-    <% } %>
-    <a href="/urls/new">Click here to shorten a URL</a>
-  </ul>
+  <div class="imageContainer">
+    <div class="centerContainer">
+      <div class="sloganContainer">
+        <p id="slogan"> Life's short, don't waste time on long urls... </p>
+      </div>
+      <div id="clickhere">
+        <a id="shortenUrl" href="/urls/new">Click here to shorten a URL</a>
+      </div>
+   </div>  
+  </div>
+  <div class="links">
+      <ul id="listOfUrls">
+        <%
+          for(var shortenedUrl in urls) {
+        %>
+          <li class="shortLongUrls">
+            <div class="listItemContainer">
+              <form class="shortUrlForm" action="shortUrl/<%= shortenedUrl%>" method="post">
+                <input class="shortUrlButton" type="submit" value="<%= shortenedUrl %>" />
+              </form>
+              <p class="longUrl"><%= urls[shortenedUrl]%></p>
+              <a class="editButton" href="urls/<%= shortenedUrl %>">Edit</a>
+              <form class="delete" method="POST" action="/urls/<%= shortenedUrl%>?_method=DELETE">
+                <input class="deleteButton" type="submit" value="Delete"/>
+              </form>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+  </div>
 </body>
 
 

@@ -2,15 +2,17 @@
 <html>
 <head>
   <title>Tinyapp</title>
+   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,600" rel="stylesheet">
+   <link rel="stylesheet" href="style/main.css" type="text/css" />
 </head>
-<body>
-<h1>Hello there, please create an account!</h1>
+<body style="margin: 20px">
+  <h1 id="register">Create an account</h1>
   <form method='POST' action='/register'>
-    <label> Email: </label>
-    <input name='Email' type ='email' /><br />
-    <label> Password: </label>
+    <label id="register1"> Email Address*: </label> <br />
+    <input name='Email' type ='Email' /><br />
+    <label id="register2"> Password*: </label> <br />
     <input name='Password' type ='password' /><br />
-    <input type='submit' value ='Submit' />
+    <input type='submit' value ='Register' />
   </form>
 </body>
 </html>

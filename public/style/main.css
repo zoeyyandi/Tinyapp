@@ -1,0 +1,304 @@
+html, body {
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#title {
+  font-weight: bold;
+}
+
+input[type=submit] {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  padding-right: 0;
+  width: 160px;
+  height: 20px;
+  border: 1px #000 solid;
+  text-align: center;
+  background-color: #fff;
+}
+
+input[type=Email] {
+  font-family: 'Josefin Sans', sans-serif;
+  width: 300px;
+  height: 25px;
+  margin: 5px 0 10px 0;
+}
+
+
+input[type=password] {
+  font-family: 'Josefin Sans', sans-serif;
+  width: 300px;
+  height: 25px;
+  margin: 5px 0 15px 0 ;
+}
+
+#nav-bar {
+  background-color: #E3E3E3;
+  color: #000;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  padding-left: 1em;
+  padding-right: 5em;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#loginRegisterButtons {
+  display: inline-block;
+  margin: 0 50px;
+  display: flex;
+  width: 350px;
+  justify-content: space-around;
+
+}
+
+#register3 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  border: none;
+  background-color: #E3E3E3;
+}
+
+#login3 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  border: none;
+  background-color: #E3E3E3;
+}
+
+#listOfUrls {
+  list-style: none;
+  width: 100%; 
+  display: block;
+  padding-left: 0;
+  margin: 0;
+  color: white;
+}
+
+.shortUrlForm {
+  display: inline-block;
+}
+
+.longUrl {
+  width: 180px;
+  display: inline-block;
+}
+
+.delete {
+  display: inline-block;
+}
+
+.shortLongUrls {
+  font-size: 18px;
+}
+
+.shortUrlButton, .deleteButton, #updateBtn{
+  border: none!important;
+}
+
+.shortUrlButton:hover {
+  cursor: pointer;
+  background-color: #2B303A;
+  color: #fff
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+  background-color: #2B303A;
+  color: #fff
+}
+
+.shortLongUrls:nth-child(odd) {
+  background-color: #A44200;
+}
+
+.shortLongUrls:nth-child(even) {
+  background-color: #D58936;
+}
+
+.listItemContainer {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#userid {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.editButton {
+  text-decoration: none;
+  color: #fff;
+  width: 32px;
+}
+
+.editButton:hover {
+  color: #000
+}
+
+#shortUrlLink {
+  text-decoration: none;
+}
+
+#deleteButton {
+  border: none;
+  font-size: 18px;
+}
+
+#logout {
+  margin: 30px 10px;
+}
+
+#userProfile {
+  margin: 32px 10px;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+}
+
+#keyboard {
+  height: auto;
+  width: 100%;
+  position: fixed;
+}
+
+#shortenUrl {
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  font-size: 18px;
+  margin-left: 12px;
+  padding-top: 15px;
+}
+
+.imageContainer {
+  margin-top: 60px;
+  padding-top: 100px;
+  width: 100%;
+  height: 500px;
+  background: url("/images/keyboard.jpg") top left no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.centerContainer {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.sloganContainer {
+  padding-top: 35px;
+  margin-bottom: 140px;
+}
+
+#slogan {
+  color: white;
+  font-size: 18px;
+  width: 350px;
+  margin: 0 auto;
+  padding-left: 30px;
+}
+
+#clickhere {
+  height: 50px;
+  width: 250px;
+  margin: 0 auto;
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 1)
+}
+
+#clickhere.clicked {
+  background-color: transparent;
+  opacity: 1;
+  width: 500px;
+  left: 33%;
+}
+
+#formLabel {
+  color: #fff;
+}
+
+.topContainer {
+  background-color: #A44200;
+  padding: 50px 0 50px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#shortUrlTitle {
+  font-weight: normal; 
+  font-size: 18px;
+}
+
+.outerContainer {
+  margin-top: 60px;
+  width: 100%;
+}
+
+.contentContainer {
+  width: 35%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+#visitNumbers {
+  list-style-type: none;
+  padding: 0;
+}
+
+#updateForm {
+  width: 420px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#updateBtn:hover {
+  cursor: pointer;
+  background-color: #2B303A;
+  color: #fff
+}
+
+#updatedLink {
+  border: none;
+  height: 18px;
+}
+
+#listOfVisits {
+  background-color: #D58936;
+  list-style-type: none;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+#listOfVisits li {
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.visitId {
+  width: 100px;
+}
+
+#titleLink {
+  text-decoration: none;
+  color: #000;
+}
+
