@@ -126,7 +126,6 @@ app.post('/register', (req, res) => {
   req.session.user_id = newUserId
   
   const result = database.register(email, hashedPassword, newUserId)
-  console.log(result)
   if(result.error) {
     res.render('/urls_error', result)
   } else {
