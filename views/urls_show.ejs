@@ -1,9 +1,35 @@
 <%- include('partials/_header'); %>
 <body>
-<h1>ShortURL: <%= shortURL %></h1>
-  <form method="POST" action="/urls/<%= shortURL%>">
-    <input name="updatedLink" style="width: 250px" id="updatedLink" placeholder="<%= urls[shortURL]%>">
-    <input type="submit" value="Update"/>
-  </form>
+<div class="outerContainer"> 
+  <div class="topContainer">
+    <div class="contentContainer">
+      <h1 id="shortUrlTitle">ShortURL: <%= shortURL %></h1>
+      <ul id="visitNumbers"> 
+        <li> Total Visits: <%= totalVisits %> </li>
+        <li> Unique Visits: <%= totalUniqueVisits %> </li>
+      </ul>
+        <form id="updateForm" method="POST" action="/urls/<%= shortURL %>">
+          <input name="updatedLink" style="width: 250px" id="updatedLink" placeholder="<%= longurl %>">
+          <input id="updateBtn" type="submit" value="Update"/>
+        </form>
+    </div>
+  </div>
+    <ul id="listOfVisits">
+      <li>
+          <p class="visitId">Visitor ID</p>
+          <p>Time Visited</p>
+      </li>
+      <% 
+        for(let eachVisit of visitInfo) {
+      %> 
+        <li>
+          <p class="visitId"><%= eachVisit.visitor_id %></p>
+          <p><%= eachVisit.timeStamp %></p>
+        </li>
+      <% } %>   
+    </ul>
+</div>
 </body>
+
+
 
